@@ -17,9 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./spec-kit
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,15 +33,22 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
+        working-directory: ./spec-kit
         run: npm ci
 
       - name: Build with Astro
+        working-directory: ./spec-kit
         run: npm run build
+
+      - name: Organize build output
+        run: |
+          mkdir -p _site/spec-kit
+          cp -r spec-kit/dist/* _site/spec-kit/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./spec-kit/dist
+          path: ./_site
 
   deploy:
     environment:
