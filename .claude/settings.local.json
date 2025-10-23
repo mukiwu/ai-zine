@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(npm create astro:*)",
+      "Bash(npm install)",
+      "Bash(npx astro add:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(gh repo create:*)",
+      "Bash(gh repo delete:*)",
+      "Bash(gh auth refresh:*)",
+      "Write(.github/workflows/deploy.yml)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

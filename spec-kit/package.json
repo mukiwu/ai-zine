@@ -1,0 +1,17 @@
+{
+  "name": "spec-kit-zine",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.15",
+    "astro": "^5.14.8",
+    "framer-motion": "^12.23.24",
+    "tailwindcss": "^4.1.15"
+  }
+}

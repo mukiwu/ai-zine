@@ -1,0 +1,311 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Spec-Driven Development Zine">
+  <!-- Scroll Zine Container -->
+  <main class="snap-y snap-mandatory h-screen overflow-scroll">
+
+    <!-- Page 1: Cover -->
+    <article class="snap-start h-screen flex items-center justify-center bg-stone-100 paper-texture">
+      <div class="text-center px-8 max-w-4xl">
+        <h1 class="mb-8 collage-rotate-left">
+          Spec-Driven<br/>Development
+        </h1>
+        <p class="text-2xl leading-relaxed opacity-70">
+          在 AI 時代重新思考軟體開發流程
+        </p>
+        <div class="mt-12 text-sm opacity-50">
+          <p>GitHub Spec Kit × BMAD-Method</p>
+          <p class="mt-2">一場關於規格與實作的對話</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Page 2: Against Vibe Coding -->
+    <article class="snap-start h-screen grid grid-cols-2">
+      <div class="p-12 flex flex-col justify-center bg-stone-200 paper-texture">
+        <h2 class="mb-8 collage-rotate-left">"Vibe Coding"<br/>的終結</h2>
+        <p class="text-lg leading-relaxed">
+          那種不結構化、即興式的開發方式——對著 AI 編碼助手隨意拋出提示詞，然後期待好結果——已經不再可行。
+        </p>
+        <p class="mt-6 text-lg leading-relaxed opacity-70">
+          我們需要的是清晰的規格，而非模糊的期待。
+        </p>
+      </div>
+      <div class="p-12 flex items-center justify-center bg-stone-800 text-stone-100">
+        <div class="max-w-md">
+          <p class="text-xl font-bold mb-6">兩個解決方案浮現：</p>
+          <div class="space-y-4">
+            <div class="border-l-4 border-stone-400 pl-4">
+              <p class="font-bold">GitHub Spec Kit</p>
+              <p class="text-sm mt-1 opacity-80">工具無關的規格驅動工具包</p>
+            </div>
+            <div class="border-l-4 border-stone-400 pl-4">
+              <p class="font-bold">BMAD-Method</p>
+              <p class="text-sm mt-1 opacity-80">多代理協作的全生命週期框架</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Page 3: GitHub Spec Kit Intro -->
+    <article class="snap-start h-screen flex items-center bg-stone-50">
+      <div class="w-full px-16 py-12">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="mb-12">GitHub Spec Kit</h2>
+          <div class="grid grid-cols-2 gap-12">
+            <div>
+              <h3 class="mb-4 text-stone-600">核心理念</h3>
+              <p class="leading-relaxed">
+                一套開源工具包，提供結構化流程將「規格優先」開發帶入 AI 編碼代理工作流程。翻轉傳統「程式碼優先」的腳本。
+              </p>
+              <p class="mt-4 text-sm opacity-60">
+                先寫清晰的規格，再讓 AI 代理根據詳細需求實作。
+              </p>
+            </div>
+            <div>
+              <h3 class="mb-4 text-stone-600">關鍵特性</h3>
+              <ul class="space-y-3 leading-relaxed">
+                <li class="flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>CLI 工具與結構化工作流程模板</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>規格 → 計劃 → 任務 → 實作 管道</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>記憶檔案維持跨會話上下文</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>整合熱門 AI 編碼代理</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Page 4: BMAD-Method Intro -->
+    <article class="snap-start h-screen">
+      <div class="h-full grid grid-cols-5">
+        <div class="col-span-3 p-12 flex flex-col justify-center bg-amber-50 paper-texture">
+          <h2 class="mb-8">BMAD-Method</h2>
+          <p class="text-xl leading-relaxed mb-6">
+            Breakthrough Method for Agile AI-Driven Development
+          </p>
+          <p class="leading-relaxed">
+            一個全面的框架，使用專門的 AI 代理和角色來轉化不僅僅是軟體開發的領域。建立在代理協作原則之上，為 AI 驅動的開發帶來結構與工程紀律。
+          </p>
+        </div>
+        <div class="col-span-2 p-10 bg-amber-800 text-amber-50 flex flex-col justify-center">
+          <h3 class="mb-6 text-amber-200">多重代理角色</h3>
+          <div class="space-y-2 text-sm">
+            <p>• Analyst 分析師</p>
+            <p>• PM 產品經理</p>
+            <p>• Architect 架構師</p>
+            <p>• Developer 開發者</p>
+            <p>• QA 測試工程師</p>
+            <p class="mt-4 opacity-70">...以及更多專門角色</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Page 5: Similarities (Collage Style) -->
+    <article class="snap-start h-screen relative overflow-hidden bg-white">
+      <div class="absolute top-16 left-12 collage-rotate-left z-10">
+        <h2 class="text-stone-900">共同點</h2>
+      </div>
+
+      <div class="absolute top-32 right-16 w-72 p-6 bg-stone-100 collage-rotate-right shadow-lg">
+        <h3 class="mb-3">規格優先哲學</h3>
+        <p class="text-sm leading-relaxed">
+          兩者都強調在開始實作前定義清晰的需求與規格，遠離即興式提示。
+        </p>
+      </div>
+
+      <div class="absolute top-80 left-24 w-80 p-6 bg-amber-50 collage-rotate-left shadow-lg">
+        <h3 class="mb-3">上下文保存</h3>
+        <p class="text-sm leading-relaxed">
+          都解決了 AI 代理失去專案上下文追蹤的關鍵問題，透過結構化文件與記憶系統。
+        </p>
+      </div>
+
+      <div class="absolute bottom-32 right-32 w-72 p-6 bg-stone-200 shadow-lg">
+        <h3 class="mb-3">結構化工作流程</h3>
+        <p class="text-sm leading-relaxed">
+          提供有組織的開發管道，而非自由式 AI 互動。
+        </p>
+      </div>
+
+      <div class="absolute bottom-24 left-48 w-64 p-6 bg-amber-100 collage-rotate-right shadow-lg">
+        <h3 class="mb-3">開源社群</h3>
+        <p class="text-sm leading-relaxed">
+          都是活躍開發的開源專案，擁有成長中的社群。
+        </p>
+      </div>
+    </article>
+
+    <!-- Page 6: Key Differences -->
+    <article class="snap-start h-screen grid grid-cols-2">
+      <div class="p-12 bg-blue-50 paper-texture flex flex-col justify-center">
+        <h2 class="mb-8 text-blue-900">關鍵差異</h2>
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-blue-800 mb-3">Spec Kit</h3>
+            <p class="text-sm leading-relaxed">
+              工具無關的工具包。不是代理團隊，而是一系列指令（/specify, /plan, /tasks）來結構化提示詞。
+            </p>
+            <p class="mt-3 text-sm leading-relaxed opacity-70">
+              目標：讓規格成為可執行的單一事實來源。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="p-12 bg-amber-50 paper-texture flex flex-col justify-center">
+        <div class="space-y-8 mt-16">
+          <div>
+            <h3 class="text-amber-800 mb-3">BMAD-Method</h3>
+            <p class="text-sm leading-relaxed">
+              多代理方法論。一個完整的專案團隊：分析師代理、產品經理代理、開發者代理等。
+            </p>
+            <p class="mt-3 text-sm leading-relaxed opacity-70">
+              強項：透過為每個代理隔離上下文來管理複雜的多儲存庫專案。
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Page 7: Trade-offs -->
+    <article class="snap-start h-screen flex items-center justify-center bg-stone-800 text-stone-100">
+      <div class="max-w-5xl px-12">
+        <h2 class="mb-12 text-center text-stone-200">取捨分析</h2>
+        <div class="grid grid-cols-2 gap-12">
+          <div class="border-l-4 border-blue-400 pl-6">
+            <h3 class="mb-4 text-blue-300">Spec Kit 優勢</h3>
+            <ul class="space-y-3 text-sm">
+              <li>✓ 進入門檻較低</li>
+              <li>✓ 專注方法：集中於規格清晰度</li>
+              <li>✓ 工具無關：可搭配各種 AI 編碼代理</li>
+              <li>✓ GitHub 生態整合</li>
+            </ul>
+          </div>
+          <div class="border-l-4 border-amber-400 pl-6">
+            <h3 class="mb-4 text-amber-300">BMAD 優勢</h3>
+            <ul class="space-y-3 text-sm">
+              <li>✓ 全面涵蓋：處理整個專案生命週期</li>
+              <li>✓ 可擴展性：可配置的編排代理</li>
+              <li>✓ 領域靈活性：可應用於軟體開發之外</li>
+              <li>✓ 流程成熟度：經過驗證的工作流程</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Page 8: Recommendations -->
+    <article class="snap-start h-screen p-12 bg-stone-100 paper-texture flex items-center">
+      <div class="max-w-6xl mx-auto w-full">
+        <h2 class="mb-12">實際建議</h2>
+        <div class="grid grid-cols-2 gap-16">
+          <div>
+            <h3 class="mb-6 text-blue-800">選擇 Spec Kit 當你：</h3>
+            <ul class="space-y-4 leading-relaxed">
+              <li class="flex items-start">
+                <span class="mr-3 text-blue-600">→</span>
+                <span>剛開始接觸結構化 AI 開發方法</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-3 text-blue-600">→</span>
+                <span>處理中小型專案</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-3 text-blue-600">→</span>
+                <span>想要改善規格實踐而不需大幅變更工作流程</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-3 text-blue-600">→</span>
+                <span>偏好輕量、專注的工具</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-6 text-amber-800">選擇 BMAD-Method 當你：</h3>
+            <ul class="space-y-4 leading-relaxed">
+              <li class="flex items-start">
+                <span class="mr-3 text-amber-600">→</span>
+                <span>管理複雜、多面向的專案</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-3 text-amber-600">→</span>
+                <span>需要全面的代理驅動專案管理</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-3 text-amber-600">→</span>
+                <span>跨軟體開發之外的多個領域工作</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-3 text-amber-600">→</span>
+                <span>需要詳細的角色分離與編排</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Page 9: Examples -->
+    <article class="snap-start h-screen bg-white p-12">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="mb-12 text-center">實作範例</h2>
+
+        <div class="space-y-12">
+          <div class="border-l-4 border-blue-500 pl-8 py-4 bg-blue-50">
+            <h3 class="mb-4 text-blue-900">Spec Kit 範例</h3>
+            <p class="mb-3 font-semibold">場景：為現有應用程式添加電子郵件驗證功能</p>
+            <ol class="space-y-2 text-sm leading-relaxed">
+              <li>1. 執行 <code class="bg-blue-200 px-2 py-1 rounded">/specify</code> 用白話描述功能，AI 生成詳細規格</li>
+              <li>2. 執行 <code class="bg-blue-200 px-2 py-1 rounded">/plan</code>，AI 生成技術計劃（API 端點、資料庫變更）</li>
+              <li>3. 執行 <code class="bg-blue-200 px-2 py-1 rounded">/tasks</code>，將計劃分解為細項任務</li>
+              <li>4. 使用你偏好的 AI 工具逐一實作每個任務</li>
+            </ol>
+          </div>
+
+          <div class="border-l-4 border-amber-500 pl-8 py-4 bg-amber-50">
+            <h3 class="mb-4 text-amber-900">BMAD 範例</h3>
+            <p class="mb-3 font-semibold">場景：建構簡單的使用者認證微服務</p>
+            <ol class="space-y-2 text-sm leading-relaxed">
+              <li>1. 執行 Analyst Agent 定義核心功能與需求</li>
+              <li>2. Product Manager Agent 接收輸出，創建詳細的 auth-service.prd</li>
+              <li>3. Scrum Master Agent 將 PRD 分解為使用者故事</li>
+              <li>4. Developer Agent 接收單一故事，基於上下文隔離的任務建構程式碼</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Page 10: Closing -->
+    <article class="snap-start h-screen flex items-center justify-center bg-stone-900 text-stone-100">
+      <div class="text-center px-8 max-w-3xl">
+        <h2 class="mb-8 text-stone-200">回顧</h2>
+        <p class="text-xl leading-relaxed mb-8">
+          兩個框架都代表了結構化 AI 輔助開發的重大進展，<br/>
+          解決了與 AI 代理工作時維持連貫專案上下文與規格的關鍵挑戰。
+        </p>
+        <div class="mt-12 pt-12 border-t border-stone-700 text-sm opacity-60">
+          <p>選擇你的路徑，但記住：</p>
+          <p class="mt-4 text-lg">規格優先，永遠。</p>
+        </div>
+      </div>
+    </article>
+
+  </main>
+</BaseLayout>
