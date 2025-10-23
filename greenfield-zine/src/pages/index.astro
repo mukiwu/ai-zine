@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Greenfield vs Brownfield | Page 1">
+  <div class="min-h-screen bg-gradient-to-br from-green-50 to-amber-50 p-8">
+    <div class="max-w-5xl mx-auto">
+      <!-- Page Header -->
+      <div class="text-right mb-4 text-sm text-gray-500">
+        Page 1 of 4
+      </div>
+
+      <!-- Cover Title -->
+      <div class="text-center mb-16 mt-20">
+        <h1 class="text-7xl font-black mb-6 leading-tight">
+          <span class="text-green-600">Greenfield</span>
+          <span class="text-gray-800"> vs </span>
+          <span class="text-amber-700">Brownfield</span>
+        </h1>
+        <p class="text-2xl text-gray-600 font-medium">
+          從土地開發到軟體工程的比喻之旅
+        </p>
+      </div>
+
+      <!-- Introduction -->
+      <div class="bg-white rounded-2xl shadow-xl p-10 max-w-3xl mx-auto">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-4xl">💡</div>
+          <div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">這是什麼？</h2>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              「Greenfield」和「Brownfield」其實是<strong>專有名詞</strong>，
+              原本並非來自軟體領域，而是從<strong class="text-amber-700">土木工程與都市開發</strong>
+              的比喻延伸而來，後來才被引入<strong class="text-green-700">軟體開發與系統工程</strong>領域中使用。
+            </p>
+          </div>
+        </div>
+
+        <div class="border-t-2 border-gray-200 my-8"></div>
+
+        <div class="grid grid-cols-2 gap-8">
+          <div class="bg-green-50 rounded-xl p-6 border-2 border-green-200">
+            <div class="text-3xl mb-3">🌱</div>
+            <h3 class="text-xl font-bold text-green-800 mb-3">Greenfield</h3>
+            <p class="text-gray-700">
+              乾淨的草地<br/>
+              → 從零開始建新系統
+            </p>
+          </div>
+
+          <div class="bg-amber-50 rounded-xl p-6 border-2 border-amber-200">
+            <div class="text-3xl mb-3">🏗️</div>
+            <h3 class="text-xl font-bold text-amber-800 mb-3">Brownfield</h3>
+            <p class="text-gray-700">
+              舊的土地<br/>
+              → 改造現有系統
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="text-center mt-12">
+        <a
+          href="origin"
+          class="inline-block bg-gray-800 text-white px-8 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors"
+        >
+          下一頁：起源背景 →
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

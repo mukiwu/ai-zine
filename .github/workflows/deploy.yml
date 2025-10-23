@@ -26,24 +26,36 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: './spec-kit/package-lock.json'
+          cache-dependency-path: |
+            ./spec-kit/package-lock.json
+            ./greenfield-zine/package-lock.json
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Install dependencies
+      - name: Install dependencies for spec-kit
         working-directory: ./spec-kit
         run: npm ci
 
-      - name: Build with Astro
+      - name: Build spec-kit
         working-directory: ./spec-kit
+        run: npm run build
+
+      - name: Install dependencies for greenfield-zine
+        working-directory: ./greenfield-zine
+        run: npm ci
+
+      - name: Build greenfield-zine
+        working-directory: ./greenfield-zine
         run: npm run build
 
       - name: Organize build output
         run: |
           mkdir -p _site/spec-kit
           cp -r spec-kit/dist/* _site/spec-kit/
+          mkdir -p _site/greenfield-zine
+          cp -r greenfield-zine/dist/* _site/greenfield-zine/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="起源背景 | Page 2">
+  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 p-8">
+    <div class="max-w-5xl mx-auto">
+      <!-- Page Header -->
+      <div class="flex justify-between items-center mb-8 text-sm text-gray-500">
+        <a href="./" class="hover:text-gray-700">← 上一頁</a>
+        <span>Page 2 of 4</span>
+      </div>
+
+      <!-- Title -->
+      <div class="text-center mb-12">
+        <div class="text-5xl mb-4">🌱</div>
+        <h1 class="text-5xl font-black text-gray-800 mb-4">起源背景</h1>
+        <p class="text-xl text-gray-600">從土地開發說起</p>
+      </div>
+
+      <!-- Content -->
+      <div class="bg-white rounded-2xl shadow-xl p-10 mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+          <span class="text-3xl">🏗️</span>
+          在都市規劃 / 土地開發中
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Greenfield -->
+          <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-8 border-2 border-green-300">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="text-4xl">🌾</div>
+              <h3 class="text-2xl font-bold text-green-800">Greenfield</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="bg-white/70 rounded-lg p-4">
+                <div class="font-bold text-green-900 mb-2">📍 定義</div>
+                <p class="text-gray-700">
+                  指的是<strong>「未開發的土地」</strong>
+                </p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4">
+                <div class="font-bold text-green-900 mb-2">🌱 特徵</div>
+                <p class="text-gray-700">
+                  像是一片草地或農田，可以從零開始開發
+                </p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4">
+                <div class="font-bold text-green-900 mb-2">💡 例子</div>
+                <p class="text-gray-700">
+                  在郊區空地上建造新的住宅社區
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brownfield -->
+          <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-8 border-2 border-amber-300">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="text-4xl">🏭</div>
+              <h3 class="text-2xl font-bold text-amber-800">Brownfield</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="bg-white/70 rounded-lg p-4">
+                <div class="font-bold text-amber-900 mb-2">📍 定義</div>
+                <p class="text-gray-700">
+                  指的是<strong>「已開發過的土地」</strong>
+                </p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4">
+                <div class="font-bold text-amber-900 mb-2">🏗️ 特徵</div>
+                <p class="text-gray-700">
+                  例如舊工廠、老建築等，需要拆除、整修或重新利用
+                </p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4">
+                <div class="font-bold text-amber-900 mb-2">💡 例子</div>
+                <p class="text-gray-700">
+                  將廢棄的工廠改建成文創園區
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insight Box -->
+      <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-8 border-2 border-purple-200">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl">💭</div>
+          <div>
+            <h3 class="text-xl font-bold text-purple-900 mb-3">為什麼要借用這個比喻？</h3>
+            <p class="text-gray-700 leading-relaxed">
+              因為軟體開發與土地開發有許多相似之處：<br/>
+              • 都需要<strong>規劃、設計、施工</strong><br/>
+              • 都有<strong>歷史包袱 vs 全新起點</strong>的問題<br/>
+              • 都需要考慮<strong>成本、時間、風險</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex justify-between items-center mt-12">
+        <a
+          href="./"
+          class="inline-block bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition-colors"
+        >
+          ← 上一頁
+        </a>
+        <a
+          href="software"
+          class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors"
+        >
+          下一頁：軟體開發中的應用 →
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="實際應用場景 | Page 4">
+  <div class="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 p-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- Page Header -->
+      <div class="flex justify-between items-center mb-8 text-sm text-gray-500">
+        <a href="software" class="hover:text-gray-700">← 上一頁</a>
+        <span>Page 4 of 4</span>
+      </div>
+
+      <!-- Title -->
+      <div class="text-center mb-12">
+        <div class="text-5xl mb-4">⚙️</div>
+        <h1 class="text-5xl font-black text-gray-800 mb-4">工程管理中的用法</h1>
+        <p class="text-xl text-gray-600">實務應用場景</p>
+      </div>
+
+      <!-- Use Cases -->
+      <div class="grid md:grid-cols-3 gap-6 mb-10">
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <div class="text-4xl mb-3">🔗</div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">系統整合</h3>
+          <div class="space-y-2 text-sm">
+            <p><span class="font-bold text-green-700">Greenfield：</span>全新部署</p>
+            <p><span class="font-bold text-amber-700">Brownfield：</span>既有系統擴充</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <div class="text-4xl mb-3">☁️</div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">雲端遷移</h3>
+          <div class="space-y-2 text-sm">
+            <p><span class="font-bold text-green-700">Greenfield：</span>雲端重建</p>
+            <p><span class="font-bold text-amber-700">Brownfield：</span>舊系統遷移上雲</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <div class="text-4xl mb-3">🚀</div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">數位轉型</h3>
+          <div class="space-y-2 text-sm">
+            <p><span class="font-bold text-green-700">Greenfield：</span>全新數位平台</p>
+            <p><span class="font-bold text-amber-700">Brownfield：</span>改造老系統</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Comparison Table -->
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
+          <h2 class="text-2xl font-bold">詳細比較表</h2>
+          <p class="text-indigo-100 mt-2">從架構、時間、人力、風險、靈活性全面比較</p>
+        </div>
+
+        <table class="w-full">
+          <thead>
+            <tr class="bg-gray-100 text-gray-700">
+              <th class="p-4 text-left font-bold">項目</th>
+              <th class="p-4 text-left font-bold bg-green-50 text-green-900">🌱 Greenfield</th>
+              <th class="p-4 text-left font-bold bg-amber-50 text-amber-900">🏗️ Brownfield</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr>
+              <td class="p-4 font-bold bg-gray-50">架構設計</td>
+              <td class="p-4 bg-green-50/30">可採用最新技術架構</td>
+              <td class="p-4 bg-amber-50/30">受限於既有架構，需向下兼容</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold bg-gray-50">開發時間</td>
+              <td class="p-4 bg-green-50/30">初期較快，無歷史包袱</td>
+              <td class="p-4 bg-amber-50/30">需要理解舊系統，較慢</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold bg-gray-50">人力需求</td>
+              <td class="p-4 bg-green-50/30">需要架構設計能力</td>
+              <td class="p-4 bg-amber-50/30">需要熟悉舊系統的專家</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold bg-gray-50">技術風險</td>
+              <td class="p-4 bg-green-50/30">新技術學習曲線</td>
+              <td class="p-4 bg-amber-50/30">遷移風險、資料遺失風險</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold bg-gray-50">彈性程度</td>
+              <td class="p-4 bg-green-50/30">⭐⭐⭐⭐⭐ 極高</td>
+              <td class="p-4 bg-amber-50/30">⭐⭐ 受限</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold bg-gray-50">初期成本</td>
+              <td class="p-4 bg-green-50/30">💰💰💰 較高</td>
+              <td class="p-4 bg-amber-50/30">💰💰 中等</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold bg-gray-50">維護成本</td>
+              <td class="p-4 bg-green-50/30">💰 較低</td>
+              <td class="p-4 bg-amber-50/30">💰💰💰 較高（技術債）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Summary -->
+      <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-8 mb-8">
+        <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+          <span class="text-3xl">🎯</span>
+          如何選擇？
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white/10 rounded-xl p-6 backdrop-blur">
+            <h4 class="font-bold text-xl mb-3">選擇 Greenfield 當：</h4>
+            <ul class="space-y-2 text-blue-100">
+              <li>✓ 新創公司或新產品</li>
+              <li>✓ 需要最新技術</li>
+              <li>✓ 沒有歷史包袱</li>
+              <li>✓ 有足夠資源重建</li>
+            </ul>
+          </div>
+          <div class="bg-white/10 rounded-xl p-6 backdrop-blur">
+            <h4 class="font-bold text-xl mb-3">選擇 Brownfield 當：</h4>
+            <ul class="space-y-2 text-blue-100">
+              <li>✓ 既有系統運行中</li>
+              <li>✓ 需要漸進式改進</li>
+              <li>✓ 無法承受停機</li>
+              <li>✓ 保留現有資料</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex justify-between items-center mt-12">
+        <a
+          href="software"
+          class="inline-block bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition-colors"
+        >
+          ← 上一頁
+        </a>
+        <a
+          href="./"
+          class="inline-block bg-gradient-to-r from-green-600 to-amber-600 text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-opacity"
+        >
+          回到封面
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center mt-12 text-gray-500 text-sm">
+        <p>🌟 希望這份 Zine 幫助你理解 Greenfield 與 Brownfield 的差異！</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
