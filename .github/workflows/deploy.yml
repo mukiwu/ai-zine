@@ -56,6 +56,8 @@ jobs:
           cp -r spec-kit/dist/* _site/spec-kit/
           mkdir -p _site/greenfield-zine
           cp -r greenfield-zine/dist/* _site/greenfield-zine/
+          mkdir -p _site/comet-browser-manual
+          cp -r comet-browser-manual/* _site/comet-browser-manual/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
