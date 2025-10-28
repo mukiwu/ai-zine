@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comet AI 瀏覽器：自訂快捷指令完全手冊</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --paper-cream: #f5f1e8;
+      --paper-white: #fdfcf9;
+      --ink-dark: #2a2520;
+      --ink-medium: #4a423d;
+      --ink-light: #6b635c;
+      --accent-rust: #b85c3d;
+      --accent-moss: #5a7052;
+      --shadow: rgba(42, 37, 32, 0.15);
+    }
+
+    body {
+      font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+      background-color: var(--paper-cream);
+      color: var(--ink-dark);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* 紙張質感背景 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(42, 37, 32, 0.02) 2px,
+          rgba(42, 37, 32, 0.02) 4px
+        );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* 封面設計 */
+    .cover {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 2rem;
+      background: var(--paper-white);
+      border: 3px solid var(--ink-dark);
+      border-radius: 3px;
+      box-shadow: 12px 12px 0 var(--shadow);
+      margin-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 150px;
+      height: 150px;
+      background: var(--accent-rust);
+      opacity: 0.1;
+      border-radius: 50%;
+      transform: rotate(-15deg);
+    }
+
+    .cover-badge {
+      display: inline-block;
+      background: var(--ink-dark);
+      color: var(--paper-white);
+      padding: 0.5rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+      transform: rotate(-2deg);
+      box-shadow: 4px 4px 0 var(--shadow);
+      width: fit-content;
+    }
+
+    .cover-title {
+      font-family: 'Roboto', 'Noto Serif TC', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .cover-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--ink-medium);
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.9;
+    }
+
+    .cover-meta {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      margin-bottom: 2.5rem;
+    }
+
+    .cover-meta a {
+      color: var(--accent-rust);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    .cover-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: 2px solid var(--ink-dark);
+      background: var(--ink-dark);
+      color: var(--paper-white);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      transform: rotate(-1deg);
+    }
+
+    .btn:hover {
+      transform: rotate(0deg) translate(-3px, -3px);
+      box-shadow: 6px 6px 0 var(--shadow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink-dark);
+    }
+
+    .surprise-box {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+      margin-top: 1.5rem;
+    }
+
+    .surprise-box.show {
+      max-height: 200px;
+    }
+
+    .surprise-content {
+      padding: 1.5rem;
+      background: var(--accent-moss);
+      color: var(--paper-white);
+      border-left: 4px solid var(--ink-dark);
+      transform: rotate(-1deg);
+      margin-top: 1rem;
+    }
+
+    /* 使用場景卡片 */
+    .use-cases {
+      background: var(--paper-white);
+      padding: 2.5rem;
+      border: 2px dashed var(--ink-light);
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .use-cases::before {
+      content: "✦";
+      position: absolute;
+      top: -15px;
+      left: 30px;
+      background: var(--paper-cream);
+      padding: 0 10px;
+      font-size: 1.2rem;
+      color: var(--accent-rust);
+    }
+
+    .use-case-item {
+      margin-bottom: 1.8rem;
+      padding-left: 2.5rem;
+      position: relative;
+    }
+
+    .use-case-item::before {
+      content: attr(data-number);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--ink-dark);
+      color: var(--paper-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .use-case-item h4 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--ink-dark);
+    }
+
+    .use-case-item p {
+      color: var(--ink-medium);
+      font-size: 0.95rem;
+    }
+
+    /* 目錄設計 */
+    .toc {
+      background: var(--paper-white);
+      padding: 2rem;
+      border: 3px solid var(--ink-dark);
+      margin: 4rem 0;
+      transform: rotate(1deg);
+      box-shadow: 8px 8px 0 var(--shadow);
+    }
+
+    .toc h2 {
+      font-family: 'Roboto', 'Noto Serif TC', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--ink-dark);
+      padding-bottom: 0.8rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      counter-reset: toc-counter;
+    }
+
+    .toc-list li {
+      counter-increment: toc-counter;
+      margin-bottom: 1rem;
+    }
+
+    .toc-list a {
+      color: var(--ink-dark);
+      text-decoration: none;
+      display: block;
+      padding: 0.8rem 1rem;
+      background: var(--paper-cream);
+      border-left: 4px solid transparent;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .toc-list a::before {
+      content: counter(toc-counter, decimal-leading-zero) ". ";
+      font-weight: 700;
+      color: var(--accent-rust);
+      margin-right: 0.5rem;
+    }
+
+    .toc-list a:hover {
+      border-left-color: var(--accent-rust);
+      transform: translateX(8px);
+      background: var(--paper-white);
+    }
+
+    /* 章節設計 - Page Spread 風格 */
+    .chapter {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin: 5rem 0;
+      min-height: 60vh;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .chapter.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .chapter-header {
+      background: var(--ink-dark);
+      color: var(--paper-white);
+      padding: 3rem 2.5rem;
+      border: 3px solid var(--ink-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chapter-header::after {
+      content: attr(data-number);
+      position: absolute;
+      right: -30px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-size: 8rem;
+      font-weight: 700;
+      opacity: 0.1;
+      font-family: 'Roboto', 'Noto Serif TC', serif;
+    }
+
+    .chapter-title {
+      font-family: 'Roboto', 'Noto Serif TC', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .chapter-intro {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      opacity: 0.95;
+      max-width: 600px;
+    }
+
+    .chapter-content {
+      background: var(--paper-white);
+      padding: 3rem 2.5rem;
+      border: 3px solid var(--ink-dark);
+      border-top: none;
+    }
+
+    /* 內容區塊 */
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section h3 {
+      font-family: 'Roboto', 'Noto Serif TC', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      padding-left: 1.5rem;
+      border-left: 6px solid var(--accent-rust);
+      color: var(--ink-dark);
+    }
+
+    .section h4 {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--ink-medium);
+      font-weight: 700;
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+      color: var(--ink-medium);
+    }
+
+    .section ul,
+    .section ol {
+      margin-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section li {
+      margin-bottom: 0.8rem;
+      color: var(--ink-medium);
+    }
+
+    .section li strong {
+      color: var(--ink-dark);
+    }
+
+    /* Code 樣式 */
+    code {
+      background: var(--paper-cream);
+      color: var(--accent-rust);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      font-weight: 600;
+      border: 1px solid rgba(42, 37, 32, 0.1);
+    }
+
+    /* 表格設計 - Collage 風格 */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 2rem 0;
+      border: 2px solid var(--ink-dark);
+      background: var(--paper-white);
+      transform: rotate(-0.5deg);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      background: var(--ink-dark);
+      color: var(--paper-white);
+      padding: 1rem;
+      text-align: left;
+      font-weight: 700;
+      border: 1px solid var(--ink-dark);
+    }
+
+    td {
+      padding: 1rem;
+      border: 1px solid var(--ink-light);
+      color: var(--ink-medium);
+    }
+
+    tr:nth-child(even) {
+      background: var(--paper-cream);
+    }
+
+    tr:hover {
+      background: rgba(184, 92, 61, 0.05);
+    }
+
+    /* 引用區塊 */
+    blockquote {
+      background: var(--accent-moss);
+      color: var(--paper-white);
+      padding: 2rem;
+      margin: 2rem 0;
+      border-left: 6px solid var(--ink-dark);
+      transform: rotate(-1deg);
+      box-shadow: 6px 6px 0 var(--shadow);
+    }
+
+    blockquote strong {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    /* 頁尾 */
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--paper-white);
+      border: 2px dashed var(--ink-light);
+      margin-top: 5rem;
+      color: var(--ink-medium);
+    }
+
+    .footer p:first-child {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink-dark);
+      margin-bottom: 1rem;
+    }
+
+    /* 回到頂部按鈕 */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--ink-dark);
+      color: var(--paper-white);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 3px solid var(--ink-dark);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 100;
+      transition: all 0.3s ease;
+      box-shadow: 4px 4px 0 var(--shadow);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 6px 8px 0 var(--shadow);
+    }
+
+    .back-to-top.show {
+      display: flex;
+    }
+
+    /* Loading 動畫 */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--paper-cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: opacity 0.6s ease;
+    }
+
+    .loader.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid var(--paper-cream);
+      border-top: 4px solid var(--ink-dark);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      .cover {
+        padding: 3rem 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .cover-title {
+        font-size: 2rem;
+      }
+
+      .cover-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .chapter {
+        margin: 3rem 0;
+      }
+
+      .chapter-header,
+      .chapter-content {
+        padding: 2rem 1.5rem;
+      }
+
+      .chapter-header::after {
+        font-size: 4rem;
+      }
+
+      .table-wrapper {
+        margin: 1.5rem -1.5rem;
+      }
+
+      .section ul,
+      .section ol {
+        margin-left: 1.5rem;
+      }
+    }
+
+    /* 平滑捲動 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 選取顏色 */
+    ::selection {
+      background: var(--accent-rust);
+      color: var(--paper-white);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Loading -->
+  <div class="loader" id="loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div class="container">
+    <!-- 封面 -->
+    <header class="cover">
+      <div class="cover-badge">✦ 瀏覽器裡的 AI 助手指南</div>
+      <h1 class="cover-title">Comet AI 瀏覽器<br>自訂快捷指令完全手冊</h1>
+      <p class="cover-subtitle">
+        用現代 AI 技術打造專屬的「瀏覽器副駕駛」。這份手冊整理自真實工作流程，包含機制解析、專業提示詞策略、各行業快捷指令庫，以及進階自動化技巧，協助你建立一套穩定的生產力系統。
+      </p>
+      <div class="cover-meta">
+        製作人：<a href="https://x.com/berryxia_ai" target="_blank" rel="noopener">Twitter @Berryxia_ai</a><br>
+        版面微調與正體中文化：<a href="https://muki.tw" target="_blank" rel="noopener">MUKI wu</a>
+      </div>
+      <div class="cover-actions">
+        <button class="btn" id="surpriseBtn">✨ 隨機取得靈感</button>
+        <a href="#toc" class="btn btn-secondary">開始閱讀 →</a>
+      </div>
+      <div class="surprise-box" id="surpriseBox">
+        <div class="surprise-content">
+          <p id="surpriseText"></p>
+        </div>
+      </div>
+
+      <!-- 使用場景 -->
+      <div class="use-cases">
+        <div class="use-case-item" data-number="1">
+          <h4>智慧準備</h4>
+          <p>自動解析網頁、文件或郵件，快速生成摘要、對比或結構化洞察。</p>
+        </div>
+        <div class="use-case-item" data-number="2">
+          <h4>跨角色協作</h4>
+          <p>透過角色扮演與變數模板，快速切換專家視角，穩定輸出專業成果。</p>
+        </div>
+        <div class="use-case-item" data-number="3">
+          <h4>自動化執行</h4>
+          <p>借助代理模式接管瀏覽器操作，實現標籤管理、郵件處理與表單填寫。</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- 目錄 -->
+    <nav class="toc" id="toc">
+      <h2>目錄</h2>
+      <ol class="toc-list">
+        <li><a href="#preface">前言：啟動你的 AI 代理</a></li>
+        <li><a href="#chap1">第一章：核心機制與快速上手</a></li>
+        <li><a href="#chap2">第二章：提示詞工程：取得專家級結果的原則</a></li>
+        <li><a href="#chap3">第三章：專業場景快捷指令庫</a></li>
+        <li><a href="#chap4">第四章：進階技巧與自動化工作流程</a></li>
+        <li><a href="#chap5">第五章：安全準則、常見問題與資源</a></li>
+      </ol>
+    </nav>
+
+    <!-- 前言 -->
+    <section class="chapter" id="preface">
+      <div class="chapter-header" data-number="00">
+        <h2 class="chapter-title">前言：啟動你的 AI 代理</h2>
+        <p class="chapter-intro">我們正進入一個由「代理式 AI」定義的新時代</p>
+      </div>
+      <div class="chapter-content">
+        <div class="section">
+          <p>
+            Comet 已經不只是聊天機器人，它已經進化成能在瀏覽器裡真正執行操作的「思考夥伴」和「執行者」。
+          </p>
+          <p>
+            掌握 Comet 的關鍵在於運用 <code>/shortcuts</code>（快捷指令）。它能將通用的 AI 工具轉變為針對特定任務的專業助手。這份手冊會從建構高效指令的核心原則開始，並提供涵蓋工作與生活的大量指令庫，協助你達成生產力的倍數成長。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第一章 -->
+    <section class="chapter" id="chap1">
+      <div class="chapter-header" data-number="01">
+        <h2 class="chapter-title">核心機制與快速上手</h2>
+        <p class="chapter-intro">理解 /、@ 與 [變數] 的運作方式</p>
+      </div>
+      <div class="chapter-content">
+        <div class="section">
+          <h3>1.1 核心機制：<code>/</code>、<code>@</code> 與 <code>[變數]</code></h3>
+          <ul>
+            <li>
+              <strong><code>/</code>（觸發器）</strong>：在任意輸入框輸入 <code>/</code> 就能叫出快捷方式選單，用來建立或呼叫指令。
+            </li>
+            <li>
+              <strong><code>@</code>（資料來源）</strong>：這是 Comet 的精髓，用來指定 AI 的上下文來源，大幅減少幻覺：
+              <ul>
+                <li><code>@tab</code> 或 <code>@current</code>：指向目前開啟的分頁。</li>
+                <li><code>@tabs</code>：指向所有開啟的分頁（用於對比、摘要）。</li>
+                <li><code>@file</code>：指向你上傳的檔案（如 PDF、日誌、合約）。</li>
+                <li><code>@gmail</code> / <code>@dropbox</code>：指向已連接的擴充服務。</li>
+              </ul>
+            </li>
+            <li>
+              <strong><code>[變數]</code>（參數化）</strong>：在建立模板時使用方括號（如 <code>[主題]</code>、<code>[公司]</code>）。呼叫時，Comet 會提示你填入這些變數，達成模板的高度重複使用。
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>1.2 建立你的第一個快捷指令（4步驟）</h3>
+          <ol>
+            <li>在 Comet 搜尋列或側邊助手輸入 <code>/</code>。</li>
+            <li>選擇「Create a shortcut」（建立新快捷方式）。</li>
+            <li><strong>編寫模板</strong>：在指令欄寫明「角色 + 任務 + 步驟 + 輸出格式 + 限制」。<br>
+              （例如：深度研究 <code>[主題]</code>：摘要前 5 篇論文的摘要、方法和結論。用表格輸出。）
+            </li>
+            <li><strong>命名與儲存</strong>：設定清楚的名稱（如 <code>/research-deep</code>），儲存即可。</li>
+          </ol>
+        </div>
+
+        <div class="section">
+          <h3>1.3 內建高頻快捷指令速查表</h3>
+          <p>在建立自訂模板前，先熟悉這些官方內建的實用工具：</p>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>快捷名稱</th>
+                  <th>功能說明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>/tldr</code></td>
+                  <td>摘要目前頁面的核心內容。</td>
+                </tr>
+                <tr>
+                  <td><code>/cite</code></td>
+                  <td>為目前頁面產生 APA、MLA、芝加哥三種引用格式。</td>
+                </tr>
+                <tr>
+                  <td><code>/job-fit</code></td>
+                  <td>根據你的 LinkedIn 資料和目前頁面的職缺描述，分析匹配度。</td>
+                </tr>
+                <tr>
+                  <td><code>/save-money</code></td>
+                  <td>在購物網站上查找學生優惠或折扣碼。</td>
+                </tr>
+                <tr>
+                  <td><code>/dupe</code></td>
+                  <td>查找目前產品的相似平替。</td>
+                </tr>
+                <tr>
+                  <td><code>/flashcards</code></td>
+                  <td>根據目前頁面內容（如教材）產生抽認卡（Anki 格式）。</td>
+                </tr>
+                <tr>
+                  <td><code>/quiz</code></td>
+                  <td>根據目前頁面內容產生自我測驗題。</td>
+                </tr>
+                <tr>
+                  <td><code>/due-dates</code></td>
+                  <td>從課程大綱（Syllabus）頁面提取作業和考試日期。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第二章 -->
+    <section class="chapter" id="chap2">
+      <div class="chapter-header" data-number="02">
+        <h2 class="chapter-title">提示詞工程：取得專家級結果的原則</h2>
+        <p class="chapter-intro">AI 輸出品質差的常見原因是指令模糊</p>
+      </div>
+      <div class="chapter-content">
+        <div class="section">
+          <p>掌握以下原則是確保你取得精確、可靠輸出的基石。</p>
+        </div>
+
+        <div class="section">
+          <h3>2.1 原則一：從意圖到精確指令</h3>
+          <p>將模糊的目標轉化為精確的指令。一個好的指令應包含：</p>
+          <ul>
+            <li><strong>明確動詞</strong>：使用「分析」、「比較」、「產生」、「提取」等。</li>
+            <li><strong>定義格式</strong>：明確要求「條列清單」、「Markdown 表格」、「JSON 程式碼」。</li>
+            <li><strong>指定受眾／風格</strong>：「為非技術主管撰寫」、「使用專業但友善的語氣」。</li>
+            <li><strong>設定限制</strong>：「不超過 100 字」、「僅使用 <code>@tab</code> 中的資料」。</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>2.2 原則二：上下文為王（<code>@tab</code>）</h3>
+          <p>
+            高品質的輸出離不開充足的背景資訊。透過使用 <code>@tab</code>，你可以讓 Comet 直接分析和處理特定網頁的內容，無需複製貼上。
+          </p>
+          <blockquote>
+            <strong>範例</strong>：使用 <code>@tab1</code> 和 <code>@tab2</code> 中的產品頁面，建立一個 Markdown 表格，比較它們的功能、定價和使用者評價。
+          </blockquote>
+        </div>
+
+        <div class="section">
+          <h3>2.3 關鍵區別：助手（Assistant）vs 代理（Agent）</h3>
+          <p>這是使用 Comet 的核心區別。將任務與正確的模式對齊是成功的首要步驟。</p>
+          <ul>
+            <li><strong>Comet 助手（用於分析）</strong>：專注於理解、閱讀、摘要和回答問題。</li>
+            <li><strong>Comet 代理（用於行動）</strong>：專注於執行，能接管瀏覽器完成發送郵件、管理分頁、填寫表單等操作。</li>
+          </ul>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>功能能力</th>
+                  <th>助手（分析）</th>
+                  <th>代理（行動）</th>
+                  <th>範例指令</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>內容摘要</td>
+                  <td>✔️</td>
+                  <td>❌</td>
+                  <td><code>/summarize @tab in 3 bullet points</code></td>
+                </tr>
+                <tr>
+                  <td>資訊比較</td>
+                  <td>✔️</td>
+                  <td>❌</td>
+                  <td><code>/compare features in @tab1 and @tab2</code></td>
+                </tr>
+                <tr>
+                  <td>起草郵件</td>
+                  <td>❌</td>
+                  <td>✔️</td>
+                  <td><code>/draft a reply to the email in @tab</code></td>
+                </tr>
+                <tr>
+                  <td>管理分頁</td>
+                  <td>❌</td>
+                  <td>✔️</td>
+                  <td><code>/group my tabs by topic</code></td>
+                </tr>
+                <tr>
+                  <td>填寫表單</td>
+                  <td>❌</td>
+                  <td>✔️</td>
+                  <td><code>/fill out the registration form in @tab</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>2.4 原則三：角色塑造（Persona）</h3>
+          <p>為 AI 分配一個特定的角色（「人設」），是引導其輸出風格和專業知識的強大技巧。</p>
+          <ul>
+            <li><strong>簡單角色</strong>：扮演一名私人教練，為我制定一份健康的蘋果派食譜。</li>
+            <li><strong>進階角色（專家委員會）</strong>：扮演一個由三位專家組成的委員會（創投家、財務分析師、白手起家的創業家），從各自的角度建議我的新創公司是否應尋求創投資金。</li>
+            <li><strong>專業角色（帶標準）</strong>：扮演一名資深 Python 開發者，必須遵守 PEP 8 風格指南。審查 <code>@tab</code> 中的程式碼，檢查其風格違規、潛在錯誤和優化機會。</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>2.5 原則四：掌握結構化輸出（JSON / Markdown）</h3>
+          <p>
+            明確定義輸出格式不只是為了美觀，更是一種強制 AI 進行更嚴謹、更完整思考的「約束功能」。當你要求 AI 產生一個包含「功能」、「優點」和「缺點」三欄的表格時，它被迫從這三個維度進行思考，避免了資訊的遺漏。
+          </p>
+          <ul>
+            <li><strong>Markdown 表格</strong>：為專案管理工具 A 和 B 建立一個比較表格。表格應包含以下類別：價格、主要功能、使用者評價。</li>
+            <li><strong>JSON</strong>：只回傳有效的 JSON，不包含任何說明。產生一個包含 3 個虛構使用者的清單。每個使用者應包含：姓名（字串）、年齡（數字）。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第三章 -->
+    <section class="chapter" id="chap3">
+      <div class="chapter-header" data-number="03">
+        <h2 class="chapter-title">專業場景快捷指令庫</h2>
+        <p class="chapter-intro">以下模板均可直接複製建立</p>
+      </div>
+      <div class="chapter-content">
+        <div class="section">
+          <h3>3.1 通用研究與分析</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>快捷名稱</th>
+                  <th>提示詞模板</th>
+                  <th>使用場景 & 技巧</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>/research-deep</code></td>
+                  <td>深度研究 <code>[主題]</code>：檢索前 10 篇權威論文／文章，包括摘要、方法、結論。用表格輸出：欄位＝標題／關鍵發現／來源／日期。限制 500 字，中性分析。</td>
+                  <td>學術掃描，快速文獻綜述。技巧：鏈結到 <code>/gap-analysis</code> 找研究空白。</td>
+                </tr>
+                <tr>
+                  <td><code>/fact-check</code></td>
+                  <td>事實查核目前頁面（<code>@tab</code>）中的 <code>[聲明或關鍵論述]</code>：逐條列出證據／反證，用顏色編碼（綠＝真，紅＝假，黃＝待定）。必須包含來源連結和日期。</td>
+                  <td>驗證新聞、報告。</td>
+                </tr>
+                <tr>
+                  <td><code>/compare-articles</code></td>
+                  <td>對比分析所有開啟的分頁（<code>@tabs</code>）：提取它們在 <code>[主題]</code> 上的核心觀點、證據差異、資料不一致點。用 Markdown 表格摘要。</td>
+                  <td>同時閱讀多篇報導時，快速找到共識與矛盾。</td>
+                </tr>
+                <tr>
+                  <td><code>/concept-map</code></td>
+                  <td>為 <code>[複雜概念]</code> 繪製一個概念圖：用文字描述核心節點、子節點、以及它們之間的連接關係。</td>
+                  <td>知識整理，輔助理解。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>3.2 生產力與自動化（郵件、會議）</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>快捷名稱</th>
+                  <th>提示詞模板</th>
+                  <th>使用場景 & 技巧</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>/inbox-sort</code></td>
+                  <td>連接 Gmail（<code>@gmail</code>），掃描最近 24 小時收件匣：分類為 1. 緊急待辦 2. 低優先級 3. 等待他人。為緊急項起草回覆模板。</td>
+                  <td>零收件匣（Inbox Zero）工作流程。</td>
+                </tr>
+                <tr>
+                  <td><code>/prep-meeting</code></td>
+                  <td>為行事曆上的 <code>[會議名稱]</code> 做準備：研究 <code>[與會者]</code> 的背景、<code>[公司]</code> 近 30 天動態。輸出一份包含 3 個議題、時間分配和破冰問題的議程。</td>
+                  <td>會議準備。技巧：連接 Calendar 自動抓取。</td>
+                </tr>
+                <tr>
+                  <td><code>/minutes-pro</code></td>
+                  <td>根據目前會議記錄（<code>@file</code> 或 <code>@tab</code>）：提煉 1. 決策點（含負責人／截止日期）2. 討論要點 3. 行動項目（Action Items）。用表格輸出。</td>
+                  <td>會議紀錄。</td>
+                </tr>
+                <tr>
+                  <td><code>/task-breakdown</code></td>
+                  <td>將任務 <code>[宏大目標]</code> 分解為 5 個可執行的子步驟，包括依賴關係、預估時間和截止日期。用甘特圖的文字描述方式展現。</td>
+                  <td>專案管理。技巧：@Asana 或 Notion 進行同步。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>3.3 內容創作與行銷</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>快捷名稱</th>
+                  <th>提示詞模板</th>
+                  <th>使用場景 & 技巧</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>/seo-plan</code></td>
+                  <td>為 <code>[主題]</code> 制定 SEO 內容計畫：提供 10 個長尾關鍵字（含競爭度）、3 個內容大綱、以及建議的 Meta 描述。輸出 JSON 格式。</td>
+                  <td>部落格優化，內容規劃。</td>
+                </tr>
+                <tr>
+                  <td><code>/thread-gen</code></td>
+                  <td>為 X（Twitter）產生一個關於 <code>[主題]</code> 的病毒式線程（Thread）：包含 7 則推文、一個強而有力的開場（Hook）、使用表情符號，並包含一個行動呼籲（CTA）。模仿 <code>[@作者]</code> 的風格。</td>
+                  <td>社群媒體推廣。</td>
+                </tr>
+                <tr>
+                  <td><code>/competitor-intel</code></td>
+                  <td>監控 <code>[競品公司]</code> 近 30 天動態：彙整其新功能、定價變動、媒體口碑（正面／負面）和招聘訊號。附來源。</td>
+                  <td>競品分析。</td>
+                </tr>
+                <tr>
+                  <td><code>/brand-voice</code></td>
+                  <td>分析 <code>[品牌名稱]</code> 的品牌聲音：從 <code>[3個樣本連結或@tabs]</code> 中提取其語氣、常用詞和價值觀，然後用這種聲音改寫 <code>[我的文案]</code>。</td>
+                  <td>品牌一致性。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>3.4 產品、開發與資料</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>快捷名稱</th>
+                  <th>提示詞模板</th>
+                  <th>使用場景 & 技巧</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>/spec-draft</code></td>
+                  <td>為 <code>[功能名稱]</code> 起草一份功能規格草案（PRD）：包括 1. 目標／非目標 2. 使用者故事（User Stories）3. 驗收標準（AC）4. 風險與依賴。</td>
+                  <td>產品經理撰寫 PRD。</td>
+                </tr>
+                <tr>
+                  <td><code>/code-review</code></td>
+                  <td>扮演一名資深 Python 開發者，遵守 PEP 8 規範。審查 <code>@tab</code> 中的程式碼，分析其風格違規、潛在錯誤和優化機會。以條列清單形式提供回饋。</td>
+                  <td>程式碼審查（Code Review）。</td>
+                </tr>
+                <tr>
+                  <td><code>/analyze-csv</code></td>
+                  <td>扮演一名資料分析師。分析 <code>@file</code> 中附加的 CSV 檔案。業務目標是 <code>[目標]</code>。識別關鍵趨勢和異常值，並以條列清單呈現發現。</td>
+                  <td>快速資料洞察。</td>
+                </tr>
+                <tr>
+                  <td><code>/bug-report</code></td>
+                  <td>從目前頁的日誌（<code>@tab</code>）或上傳的日誌（<code>@file</code>）中提取 bug：定位錯誤訊息、猜測根本原因，並提供一個可能的修復 diff。</td>
+                  <td>快速除錯（Debugging）。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>3.5 金融、交易與法務</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>快捷名稱</th>
+                  <th>提示詞模板</th>
+                  <th>使用場景 & 技巧</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>/trade-scan</code></td>
+                  <td>掃描股票 <code>[代號]</code>：抓取即時價格、近 24 小時關鍵新聞、以及波動 > 3% 的警報。用表格摘要 + 簡要分析。</td>
+                  <td>當日交易，市場監控。</td>
+                </tr>
+                <tr>
+                  <td><code>/earnings-brief</code></td>
+                  <td>財報速覽 <code>[公司代號]</code> <code>[季度]</code>：提取關鍵財務數字（YoY／QoQ）、管理層指引、與分析師預期的偏離。附來源。</td>
+                  <td>投資研究。</td>
+                </tr>
+                <tr>
+                  <td><code>/10k-tldr</code></td>
+                  <td>摘要 <code>[公司]</code> 最新的 10-K 年報（<code>@file</code> 或 <code>@tab</code>）：提取 1. 業務結構 2. Top 5 風險因素 3. 管理層討論（MD&A）要點 4. 關鍵訴訟。</td>
+                  <td>財報分析。</td>
+                </tr>
+                <tr>
+                  <td><code>/contract-tldr</code></td>
+                  <td>速讀目前合約（<code>@file</code>）：高亮提取 1. 義務／權利 2. 違約責任 3. 風險條款 4. 與業界常見口徑的偏差。注意：非法律建議。</td>
+                  <td>合約審查。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>3.6 教育、學習與求職</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>快捷名稱</th>
+                  <th>提示詞模板</th>
+                  <th>使用場景 & 技巧</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>/skill-accelerator</code></td>
+                  <td>為在 <code>[時間範圍]</code> 內掌握 <code>[技能]</code>，建立一個分步學習路線圖。分解為初／中／高級，包含關鍵概念、專案建議和高品質學習資源。</td>
+                  <td>結構化學習任何技能。</td>
+                </tr>
+                <tr>
+                  <td><code>/paper-tldr</code></td>
+                  <td>速讀目前論文（<code>@tab</code>）：從摘要、方法、結果、討論四部分提煉核心內容,重點說明其限制與未來可複製的實驗指引。</td>
+                  <td>論文精讀。</td>
+                </tr>
+                <tr>
+                  <td><code>/resume-tailor</code></td>
+                  <td>根據目前職缺描述（<code>@tab</code>）和我的履歷要點 <code>[貼上文字]</code>：提取職缺關鍵字，為我的專案經歷產生客製化的改寫建議，以通過 ATS 篩選。</td>
+                  <td>求職，客製化履歷。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>3.7 購物、旅行與生活</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>快捷名稱</th>
+                  <th>提示詞模板</th>
+                  <th>使用場景 & 技巧</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>/scan-reddit-reviews</code></td>
+                  <td>在 Reddit 上搜尋關於 <code>[產品]</code> 的真實使用者推薦。摘要被提及最多的前 3 款產品，並找出它們在多個線上商店中的目前最優價格。</td>
+                  <td>購物決策，避免「廣告軟文」。</td>
+                </tr>
+                <tr>
+                  <td><code>/itinerary-plan</code></td>
+                  <td>為 <code>[旅行者類型，如帶小孩的家庭]</code> 規劃一次前往 <code>[目的地]</code> 的 <code>[7]</code> 日詳細行程。包含預算估算、交通應用程式、文化禮儀和當地人推薦的隱藏景點。</td>
+                  <td>旅行規劃。</td>
+                </tr>
+                <tr>
+                  <td><code>/wellness-architect</code></td>
+                  <td>扮演一名健身教練。我的目標是 <code>[目標]</code>，目前資料是 <code>[年齡／體重]</code>，限制是 <code>[傷病]</code>。建立一個每週訓練和高蛋白飲食計畫。</td>
+                  <td>個人化健康。</td>
+                </tr>
+                <tr>
+                  <td><code>/recipe-adapt</code></td>
+                  <td>使目前食譜（<code>@tab</code>）適應我的 <code>[偏好，如素食／低卡]</code>：提供食材替換方案、調整後的步驟和預估熱量。</td>
+                  <td>健康烹飪。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第四章 -->
+    <section class="chapter" id="chap4">
+      <div class="chapter-header" data-number="04">
+        <h2 class="chapter-title">進階技巧與自動化工作流程</h2>
+        <p class="chapter-intro">組合快捷指令，建立強大的工作流程</p>
+      </div>
+      <div class="chapter-content">
+        <div class="section">
+          <h3>4.1 鏈式工作流程：組合快捷指令</h3>
+          <p>進階使用者可以透過組合多個指令來建立自動化工作流程，將前一步的輸出作為後一步的輸入。</p>
+          <ol>
+            <li>
+              <strong>市場研究流程</strong>：
+              <ol>
+                <li><code>@tab</code> <code>/competitor-intel</code> <code>[競品A]</code></li>
+                <li>（得到結果後）<em>根據以上分析，為我們的產品 <code>[我的產品]</code> 起草一份 SWOT 分析報告。</em></li>
+              </ol>
+            </li>
+            <li>
+              <strong>內容創作流程</strong>：
+              <ol>
+                <li><code>/trend-scan</code> <code>[產業]</code></li>
+                <li>（得到熱門話題後）<code>/thread-gen</code> <code>[熱門話題]</code></li>
+                <li>（得到推文後）<code>/video-prompt</code> <code>[推文內容]</code></li>
+              </ol>
+            </li>
+          </ol>
+        </div>
+
+        <div class="section">
+          <h3>4.2 思考鏈（CoT）提示：提升推理能力</h3>
+          <p>為了提升 AI 在處理複雜問題時的推理能力，你可以明確要求它「一步一步地思考」。</p>
+          <ul>
+            <li><strong>零樣本 CoT（Zero-Shot CoT）</strong>：在你的指令末尾簡單地加上一句 <strong>讓我們一步一步地思考。</strong>（<code>Let's think step-by-step.</code>）。這個簡單的追加就能顯著改善 AI 的邏輯推理過程。</li>
+            <li><strong>少樣本 CoT（Few-Shot CoT）</strong>：在你的提示詞中提供一到兩個已經完整推理出答案的範例，讓 AI 學習到你期望的推理模式和格式。</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>4.3 建構你的個人模板庫</h3>
+          <p>最有效率的使用者會建立並維護一個個人化的快捷指令庫。</p>
+          <ul>
+            <li><strong>使用佔位符建立模板</strong>：為了讓你的快捷指令更具通用性，請使用方括號 <code>[變數]</code> 來標記變數。</li>
+          </ul>
+          <blockquote>
+            <strong>範例</strong>：將一個具體的指令「為在 6 個月內掌握 Python 程式設計建立學習路線圖」，轉化為一個模板：<code>/skill-accelerator</code>：為在 <code>[時間範圍]</code> 內掌握 <code>[技能]</code> 建立一個學習路線圖。這樣，你就可以快速地將其應用於任何新的學習目標。
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第五章 -->
+    <section class="chapter" id="chap5">
+      <div class="chapter-header" data-number="05">
+        <h2 class="chapter-title">安全準則、常見問題與資源</h2>
+        <p class="chapter-intro">在效率收益和安全風險之間做出權衡</p>
+      </div>
+      <div class="chapter-content">
+        <div class="section">
+          <h3>5.1 關鍵安全與隱私準則</h3>
+          <p>賦予一個 AI 代理存取和操作你瀏覽器的權限，本身就帶來了固有的安全風險（如提示詞注入和資料外洩）。你必須在效率收益和安全風險之間做出權衡。</p>
+          <ul>
+            <li><strong>不要將 Comet 作為主要瀏覽器</strong>：避免在 Comet 中進行涉及高度敏感資訊的操作，如網路銀行、登入主要信箱或存取存有個人資料的雲端服務。</li>
+            <li><strong>避免登入關鍵帳戶</strong>：在執行複雜的「代理」（Agent）任務時，盡量不要在 Comet 中登入你的個人或工作關鍵帳戶。</li>
+            <li><strong>警覺提示詞注入</strong>：要意識到，你造訪的網頁中可能包含惡意撰寫的、對人類不可見的文字，這些文字可能會「劫持」你的 AI 代理，誘使其執行非預期的操作。</li>
+            <li><strong>信任但驗證</strong>：在使用 AI 進行財務、健康或法務分析時，應將其定位為「分析助理」。AI 不提供投資或醫療建議。最終的決策權必須掌握在你自己手中。</li>
+            <li><strong>定期清理資料</strong>：定期清除 cookies 和瀏覽歷史，減少可被追蹤或利用的資訊足跡。</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>5.2 常見問題（FAQ）</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>問題</th>
+                  <th>解答</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>如何取得更多模板？</strong></td>
+                  <td>關注 X（Twitter）上的「Comet shortcuts」標籤，以及 Reddit 的 r/perplexity_ai 社群分享討論串。</td>
+                </tr>
+                <tr>
+                  <td><strong>免費版和 Pro 版有何差別？</strong></td>
+                  <td>免費版有每日執行限額。Pro 版提供無限次執行、存取更進階的模型（如 o3）以及更強的整合功能。</td>
+                </tr>
+                <tr>
+                  <td><strong>為什麼我的自動化失敗了？</strong></td>
+                  <td>1. 檢查是否已在「連接器」中授權了對應服務（如 Gmail、Dropbox）。2. 嘗試分步測試提示詞，確保每一步都能正確執行。</td>
+                </tr>
+                <tr>
+                  <td><strong>繁體中文支援如何？</strong></td>
+                  <td>完全支援。你可以使用全繁體中文、全英文或中英混合的提示詞。在提示詞中加入「輸出繁體中文」可確保結果語言。</td>
+                </tr>
+                <tr>
+                  <td><strong>它會自動執行嗎？</strong></td>
+                  <td>不會。輸入 <code>/</code> 和快捷方式後，指令會填充到輸入框，你可以繼續編輯或補充變數，最後再手動點擊「執行」。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>5.3 官方資源</h3>
+          <ul>
+            <li>Comet 官方說明中心：提供關於快捷指令建立、編輯、堆疊和 <code>@</code> 用法的權威說明。</li>
+            <li>Comet 官方部落格：包含最新的功能更新和進階使用案例展示。</li>
+            <li>Perplexity AI 官方 X／Discord：取得社群支援和分享模板。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer">
+      <p>感謝你閱讀《Comet AI 瀏覽器：自訂快捷指令完全手冊》</p>
+      <p>請將這些快捷指令融入你的日常工作流程，建立專屬的 AI 協作體系。保持好奇、持續迭代，讓 Comet 成為你的增幅器。</p>
+    </footer>
+  </div>
+
+  <!-- 回到頂部按鈕 -->
+  <button class="back-to-top" id="backToTop">↑</button>
+
+  <script>
+    // 驚喜按鈕功能
+    const surpriseBtn = document.getElementById('surpriseBtn');
+    const surpriseBox = document.getElementById('surpriseBox');
+    const surpriseText = document.getElementById('surpriseText');
+
+    const tips = [
+      '試試將 /research-deep 與 @tab 組合，可以一鍵產生文獻調查的結構化結果。',
+      '將 /prep-meeting 指令設為模板，會議前 10 分鐘一鍵取得議程與破冰話題。',
+      '組合 /scan-reddit-reviews + /fact-check，快速篩出真實口碑與可靠資料。',
+      '利用 /task-breakdown 把模糊的專案拆成可執行節點，再同步到你的專案管理工具。',
+      '把 /brand-voice 與 /thread-gen 鏈式使用，打造風格統一的社群媒體內容矩陣。',
+      '在每個指令末尾加上「一步一步思考」，可以大幅提升 AI 的推理品質。',
+      '使用 [變數] 建立可重複使用的模板，一次設定，終身受用。',
+      '組合 @tabs 與 /compare-articles，可以快速找出多篇報導的矛盾點。'
+    ];
+
+    surpriseBtn.addEventListener('click', () => {
+      const randomTip = tips[Math.floor(Math.random() * tips.length)];
+      surpriseText.textContent = randomTip;
+      surpriseBox.classList.add('show');
+    });
+
+    // 章節滾動動畫
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.chapter').forEach(chapter => {
+      observer.observe(chapter);
+    });
+
+    // 回到頂部按鈕
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 500) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Loading 動畫
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      setTimeout(() => {
+        loader.classList.add('hide');
+        setTimeout(() => {
+          loader.remove();
+        }, 600);
+      }, 800);
+    });
+
+    // 平滑捲動到錨點
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
