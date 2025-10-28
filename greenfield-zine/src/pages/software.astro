@@ -3,141 +3,150 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="軟體開發中的應用 | Page 3">
-  <div class="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-8">
-    <div class="max-w-6xl mx-auto">
-      <!-- Page Header -->
-      <div class="flex justify-between items-center mb-8 text-sm text-gray-500">
-        <a href="origin" class="hover:text-gray-700">← 上一頁</a>
-        <span>Page 3 of 4</span>
+  <!-- Split Screen Comparison: 對比式版面 -->
+  <section class="grid grid-cols-2 min-h-screen bg-stone-50">
+    <!-- Left side: Greenfield in Software -->
+    <div class="relative p-12 bg-green-50 overflow-hidden">
+      <!-- Page number -->
+      <span class="absolute top-8 right-8 bg-green-200 px-3 py-1 text-sm font-bold rotate-[3deg] shadow-md">
+        3/4
+      </span>
+
+      <!-- Collage element: rotated title -->
+      <div class="absolute top-20 left-8 rotate-[-3deg]">
+        <h2 class="text-3xl font-black text-green-800">💻 軟體開發中</h2>
       </div>
 
-      <!-- Title -->
-      <div class="text-center mb-12">
-        <div class="text-5xl mb-4">💻</div>
-        <h1 class="text-5xl font-black text-gray-800 mb-4">軟體開發中的延伸意義</h1>
-        <p class="text-xl text-gray-600">從土地到代碼</p>
-      </div>
-
-      <!-- Comparison Table -->
-      <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
-        <table class="w-full">
-          <thead>
-            <tr class="bg-gradient-to-r from-gray-800 to-gray-700 text-white">
-              <th class="p-6 text-left text-lg font-bold">名稱</th>
-              <th class="p-6 text-left text-lg font-bold">意義</th>
-              <th class="p-6 text-left text-lg font-bold">特徵</th>
-              <th class="p-6 text-left text-lg font-bold">例子</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Greenfield Row -->
-            <tr class="bg-gradient-to-r from-green-50 to-green-100 border-b-4 border-white">
-              <td class="p-6">
-                <div class="flex items-center gap-3">
-                  <span class="text-3xl">🌱</span>
-                  <div>
-                    <div class="font-bold text-xl text-green-800">Greenfield</div>
-                    <div class="text-sm text-green-700">Project</div>
-                  </div>
-                </div>
-              </td>
-              <td class="p-6">
-                <p class="text-gray-800 font-medium">
-                  從零開始開發的新專案
-                </p>
-              </td>
-              <td class="p-6">
-                <ul class="space-y-2 text-gray-700">
-                  <li>✓ 無既有架構</li>
-                  <li>✓ 無技術負擔</li>
-                  <li>✓ 可自由設計</li>
-                </ul>
-              </td>
-              <td class="p-6">
-                <div class="bg-white rounded-lg p-4 text-sm">
-                  重新打造一個全新的 SaaS 平台
-                </div>
-              </td>
-            </tr>
-
-            <!-- Brownfield Row -->
-            <tr class="bg-gradient-to-r from-amber-50 to-amber-100">
-              <td class="p-6">
-                <div class="flex items-center gap-3">
-                  <span class="text-3xl">🏗️</span>
-                  <div>
-                    <div class="font-bold text-xl text-amber-800">Brownfield</div>
-                    <div class="text-sm text-amber-700">Project</div>
-                  </div>
-                </div>
-              </td>
-              <td class="p-6">
-                <p class="text-gray-800 font-medium">
-                  在既有系統上進行開發、整合或改造
-                </p>
-              </td>
-              <td class="p-6">
-                <ul class="space-y-2 text-gray-700">
-                  <li>⚠ 需兼容舊架構</li>
-                  <li>⚠ 有技術債</li>
-                  <li>⚠ 遷移風險高</li>
-                </ul>
-              </td>
-              <td class="p-6">
-                <div class="bg-white rounded-lg p-4 text-sm">
-                  把舊的 ERP 系統改造成雲端版
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Key Differences -->
-      <div class="grid md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-6 border-2 border-blue-300">
-          <div class="text-3xl mb-3">⚡</div>
-          <h3 class="text-lg font-bold text-blue-900 mb-2">速度與彈性</h3>
-          <p class="text-sm text-gray-700">
-            <strong>Greenfield：</strong>快速靈活<br/>
-            <strong>Brownfield：</strong>受限於舊架構
+      <!-- Main content area -->
+      <div class="mt-32 space-y-6">
+        <!-- Definition card -->
+        <div class="bg-white p-6 shadow-xl rotate-[1deg] border-l-8 border-green-600">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-4xl">🌱</span>
+            <h3 class="text-2xl font-bold text-green-900">Greenfield Project</h3>
+          </div>
+          <p class="text-stone-700 text-lg mb-4">
+            從零開始開發的新專案
           </p>
+
+          <!-- Features as sticky notes -->
+          <div class="space-y-3">
+            <div class="bg-green-100 p-3 rotate-[-1deg] shadow-md">
+              <p class="font-bold text-green-900">✓ 無既有架構</p>
+              <p class="text-stone-600 text-sm mt-1">可以選擇最新技術</p>
+            </div>
+
+            <div class="bg-green-100 p-3 rotate-[1deg] shadow-md">
+              <p class="font-bold text-green-900">✓ 無技術負擔</p>
+              <p class="text-stone-600 text-sm mt-1">沒有歷史包袱</p>
+            </div>
+
+            <div class="bg-green-100 p-3 rotate-[-2deg] shadow-md">
+              <p class="font-bold text-green-900">✓ 可自由設計</p>
+              <p class="text-stone-600 text-sm mt-1">完全按照需求規劃</p>
+            </div>
+          </div>
         </div>
 
-        <div class="bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl p-6 border-2 border-purple-300">
-          <div class="text-3xl mb-3">💰</div>
-          <h3 class="text-lg font-bold text-purple-900 mb-2">成本與風險</h3>
-          <p class="text-sm text-gray-700">
-            <strong>Greenfield：</strong>初期投入大<br/>
-            <strong>Brownfield：</strong>遷移風險高
+        <!-- Example sticker -->
+        <div class="bg-white p-6 shadow-lg rotate-[-2deg] border-2 border-dashed border-green-400">
+          <p class="text-sm font-bold text-green-900 mb-2">💡 實際例子</p>
+          <p class="text-stone-700">
+            重新打造一個<br/>
+            全新的 <strong>SaaS 平台</strong>
           </p>
         </div>
+      </div>
 
-        <div class="bg-gradient-to-br from-pink-100 to-pink-200 rounded-xl p-6 border-2 border-pink-300">
-          <div class="text-3xl mb-3">🎯</div>
-          <h3 class="text-lg font-bold text-pink-900 mb-2">適用場景</h3>
-          <p class="text-sm text-gray-700">
-            <strong>Greenfield：</strong>新創公司<br/>
-            <strong>Brownfield：</strong>企業轉型
+      <!-- Decorative arrow pointing right -->
+      <div class="absolute bottom-20 right-8">
+        <svg class="w-20 h-20" viewBox="0 0 100 100">
+          <path d="M 10 50 L 70 50"
+                stroke="#15803d"
+                stroke-width="3"
+                fill="none"
+                stroke-dasharray="5,5"/>
+          <polygon points="70,50 65,45 65,55" fill="#15803d"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Right side: Brownfield in Software -->
+    <div class="relative p-12 bg-amber-50 overflow-hidden flex flex-col">
+      <!-- Tape effect -->
+      <div class="absolute top-32 right-0 w-full h-10 bg-amber-200 opacity-30 rotate-[-3deg]"></div>
+
+      <!-- Collage element: rotated title -->
+      <div class="absolute top-20 right-8 rotate-[3deg]">
+        <h2 class="text-3xl font-black text-amber-800">⚙️ 軟體開發中</h2>
+      </div>
+
+      <!-- Main content area -->
+      <div class="mt-32 space-y-6">
+        <!-- Definition card -->
+        <div class="bg-white p-6 shadow-xl rotate-[-1deg] border-l-8 border-amber-600">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-4xl">🏗️</span>
+            <h3 class="text-2xl font-bold text-amber-900">Brownfield Project</h3>
+          </div>
+          <p class="text-stone-700 text-lg mb-4">
+            在既有系統上進行開發、整合或改造
           </p>
+
+          <!-- Features as sticky notes -->
+          <div class="space-y-3">
+            <div class="bg-amber-100 p-3 rotate-[1deg] shadow-md">
+              <p class="font-bold text-amber-900">⚠ 需兼容舊架構</p>
+              <p class="text-stone-600 text-sm mt-1">無法隨意更動</p>
+            </div>
+
+            <div class="bg-amber-100 p-3 rotate-[-2deg] shadow-md">
+              <p class="font-bold text-amber-900">⚠ 有技術債</p>
+              <p class="text-stone-600 text-sm mt-1">累積的問題要處理</p>
+            </div>
+
+            <div class="bg-amber-100 p-3 rotate-[2deg] shadow-md">
+              <p class="font-bold text-amber-900">⚠ 遷移風險高</p>
+              <p class="text-stone-600 text-sm mt-1">改動可能影響既有功能</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example sticker -->
+        <div class="bg-white p-6 shadow-lg rotate-[2deg] border-2 border-dashed border-amber-400">
+          <p class="text-sm font-bold text-amber-900 mb-2">💡 實際例子</p>
+          <p class="text-stone-700">
+            把舊的 <strong>ERP 系統</strong><br/>
+            改造成雲端版
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparison insight sticker -->
+      <div class="mt-auto mb-8 bg-purple-100 p-6 rotate-[-1deg] shadow-lg border-2 border-dashed border-purple-400">
+        <p class="text-sm font-bold text-purple-900 mb-3">⚡ 關鍵差異</p>
+        <div class="space-y-2 text-sm text-stone-700">
+          <p><strong>速度：</strong>Greenfield 快 vs Brownfield 受限</p>
+          <p><strong>成本：</strong>Greenfield 初期大 vs Brownfield 持續累積</p>
+          <p><strong>風險：</strong>Greenfield 不確定 vs Brownfield 遷移困難</p>
         </div>
       </div>
 
       <!-- Navigation -->
-      <div class="flex justify-between items-center mt-12">
-        <a
-          href="origin"
-          class="inline-block bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition-colors"
-        >
-          ← 上一頁
-        </a>
-        <a
-          href="comparison"
-          class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors"
-        >
-          下一頁：實際應用場景 →
+      <div class="absolute bottom-8 right-8">
+        <a href="comparison"
+           class="inline-block bg-yellow-100 px-6 py-4 shadow-lg rotate-[3deg] border-b-4 border-yellow-300 hover:rotate-[0deg] transition-transform duration-300">
+          <span class="text-lg font-bold text-stone-800">→ 下一頁</span>
         </a>
       </div>
     </div>
+  </section>
+
+  <!-- Back button -->
+  <div class="fixed bottom-8 left-8">
+    <a href="origin"
+       class="inline-block bg-stone-200 px-4 py-2 shadow-lg rotate-[-2deg] hover:rotate-[0deg] transition-transform duration-300">
+      <span class="font-bold text-stone-700">← 上一頁</span>
+    </a>
   </div>
 </BaseLayout>

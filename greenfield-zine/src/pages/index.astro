@@ -3,71 +3,119 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Greenfield vs Brownfield | Page 1">
-  <div class="min-h-screen bg-gradient-to-br from-green-50 to-amber-50 p-8">
-    <div class="max-w-5xl mx-auto">
-      <!-- Page Header -->
-      <div class="text-right mb-4 text-sm text-gray-500">
-        Page 1 of 4
-      </div>
+  <!-- Page Spread Layout: 跨頁排版 -->
+  <section class="grid grid-cols-2 min-h-screen">
+    <!-- Left Page: Title & Intro with collage style -->
+    <div class="relative p-12 flex flex-col justify-center bg-stone-100 overflow-hidden">
+      <!-- Page number sticker -->
+      <span class="absolute top-8 right-8 bg-amber-200 px-3 py-1 text-sm font-bold rotate-[3deg] shadow-md">
+        1/4
+      </span>
 
-      <!-- Cover Title -->
-      <div class="text-center mb-16 mt-20">
-        <h1 class="text-7xl font-black mb-6 leading-tight">
-          <span class="text-green-600">Greenfield</span>
-          <span class="text-gray-800"> vs </span>
-          <span class="text-amber-700">Brownfield</span>
-        </h1>
-        <p class="text-2xl text-gray-600 font-medium">
-          從土地開發到軟體工程的比喻之旅
+      <!-- Hand-written style title -->
+      <h1 class="text-6xl font-black leading-[1.1] mb-8" style="letter-spacing: -0.02em;">
+        <span class="inline-block rotate-[-2deg] text-green-700">Greenfield</span>
+        <br/>
+        <span class="inline-block ml-12 text-stone-800">vs</span>
+        <br/>
+        <span class="inline-block ml-8 rotate-[1deg] text-amber-800">Brownfield</span>
+      </h1>
+
+      <!-- Subtitle with slight rotation -->
+      <p class="text-xl ml-4 mb-12 max-w-md leading-relaxed text-stone-700" style="line-height: 1.8;">
+        從土地開發到<br/>
+        軟體工程的比喻之旅
+      </p>
+
+      <!-- Collage-style note -->
+      <div class="relative mt-8">
+        <div class="absolute -left-4 -top-2 w-24 h-24 bg-green-200 opacity-30 rotate-12"></div>
+        <p class="relative bg-white p-6 shadow-lg rotate-[-1deg] max-w-md border-l-4 border-green-600" style="line-height: 1.8;">
+          這兩個詞原本來自<strong>土木工程</strong>，<br/>
+          後來被借用到軟體開發領域。
         </p>
       </div>
 
-      <!-- Introduction -->
-      <div class="bg-white rounded-2xl shadow-xl p-10 max-w-3xl mx-auto">
-        <div class="flex items-start gap-4 mb-6">
-          <div class="text-4xl">💡</div>
-          <div>
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">這是什麼？</h2>
-            <p class="text-lg text-gray-700 leading-relaxed">
-              「Greenfield」和「Brownfield」其實是<strong>專有名詞</strong>，
-              原本並非來自軟體領域，而是從<strong class="text-amber-700">土木工程與都市開發</strong>
-              的比喻延伸而來，後來才被引入<strong class="text-green-700">軟體開發與系統工程</strong>領域中使用。
-            </p>
-          </div>
-        </div>
+      <!-- Hand-drawn arrow -->
+      <div class="mt-8 ml-4">
+        <svg class="w-32 h-16" viewBox="0 0 100 50">
+          <path d="M 10 25 Q 30 10, 60 25 T 90 25"
+                stroke="#78716c"
+                stroke-width="2"
+                fill="none"
+                stroke-dasharray="4,4"/>
+          <polygon points="90,25 85,20 85,30" fill="#78716c"/>
+        </svg>
+      </div>
+    </div>
 
-        <div class="border-t-2 border-gray-200 my-8"></div>
+    <!-- Right Page: Quick definitions with tape effect -->
+    <div class="relative p-12 flex flex-col justify-center bg-stone-50">
+      <!-- Tape strips for collage feel -->
+      <div class="absolute top-20 left-0 w-full h-8 bg-amber-100 opacity-40 rotate-[-2deg]"></div>
 
-        <div class="grid grid-cols-2 gap-8">
-          <div class="bg-green-50 rounded-xl p-6 border-2 border-green-200">
-            <div class="text-3xl mb-3">🌱</div>
-            <h3 class="text-xl font-bold text-green-800 mb-3">Greenfield</h3>
-            <p class="text-gray-700">
-              乾淨的草地<br/>
-              → 從零開始建新系統
-            </p>
-          </div>
-
-          <div class="bg-amber-50 rounded-xl p-6 border-2 border-amber-200">
-            <div class="text-3xl mb-3">🏗️</div>
-            <h3 class="text-xl font-bold text-amber-800 mb-3">Brownfield</h3>
-            <p class="text-gray-700">
-              舊的土地<br/>
-              → 改造現有系統
-            </p>
-          </div>
+      <!-- Greenfield card -->
+      <div class="relative mb-12 bg-white p-8 shadow-xl rotate-[-1deg] border-2 border-dashed border-green-300">
+        <div class="absolute -top-3 -left-3 text-6xl">🌱</div>
+        <h2 class="text-3xl font-bold text-green-800 mb-4 ml-12">
+          Greenfield
+        </h2>
+        <p class="text-lg text-stone-700 leading-relaxed ml-12">
+          <strong>乾淨的草地</strong><br/>
+          沒有歷史包袱<br/>
+          從零開始建立新系統
+        </p>
+        <!-- Hand-drawn underline -->
+        <div class="ml-12 mt-2">
+          <svg class="w-full h-2" viewBox="0 0 200 10">
+            <path d="M 0 5 Q 50 2, 100 6 T 200 5"
+                  stroke="#15803d"
+                  stroke-width="2"
+                  fill="none"/>
+          </svg>
         </div>
       </div>
 
-      <!-- Navigation -->
-      <div class="text-center mt-12">
-        <a
-          href="origin"
-          class="inline-block bg-gray-800 text-white px-8 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors"
-        >
-          下一頁：起源背景 →
+      <!-- Brownfield card -->
+      <div class="relative bg-white p-8 shadow-xl rotate-[1deg] border-2 border-dashed border-amber-400">
+        <div class="absolute -top-3 -right-3 text-6xl">🏗️</div>
+        <h2 class="text-3xl font-bold text-amber-800 mb-4">
+          Brownfield
+        </h2>
+        <p class="text-lg text-stone-700 leading-relaxed">
+          <strong>舊的土地</strong><br/>
+          需要拆除或整修<br/>
+          改造既有的系統
+        </p>
+        <!-- Highlight sticker -->
+        <div class="absolute bottom-4 right-4 bg-amber-200 px-3 py-1 text-sm rotate-[-5deg] shadow-md">
+          重要！
+        </div>
+      </div>
+
+      <!-- Navigation as sticky note -->
+      <div class="mt-12 ml-auto">
+        <a href="origin"
+           class="inline-block bg-yellow-100 px-6 py-4 shadow-lg rotate-[2deg] border-b-4 border-yellow-300 hover:rotate-[0deg] transition-transform duration-300"
+           style="font-family: 'Noto Sans TC', sans-serif;">
+          <span class="text-lg font-bold text-stone-800">→ 下一頁</span><br/>
+          <span class="text-sm text-stone-600">起源背景</span>
         </a>
       </div>
     </div>
-  </div>
+  </section>
+
+  <style>
+    /* Paper texture simulation */
+    section {
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0,0,0,0.01) 2px,
+          rgba(0,0,0,0.01) 4px
+        );
+    }
+  </style>
 </BaseLayout>
